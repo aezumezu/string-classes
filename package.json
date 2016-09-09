@@ -5,6 +5,7 @@
   "main": "src/string-classes.js",
   "devDependencies": {
     "coveralls": "^2.11.12",
+    "eslint": "^3.4.0",
     "jasmine": "^2.5.1",
     "jasmine-spec-reporter": "^2.7.0"
   },
