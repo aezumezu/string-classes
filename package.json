@@ -1,0 +1,26 @@
+{
+  "name": "string-classes",
+  "version": "1.0.0",
+  "description": "Extends functions of the String Object",
+  "main": "src/string-classes.js",
+  "devDependencies": {
+    "coveralls": "^2.11.12",
+    "jasmine": "^2.5.1",
+    "jasmine-spec-reporter": "^2.7.0"
+  },
+  "scripts": {
+    "test:coverage": "rm -rf coverage/ && istanbul cover node_module/jasmine/bin/jasmine.js",
+    "test": "node jasmine-runner.js",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aezumezu/string-classes.git"
+  },
+  "author": "Ezumezu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aezumezu/string-classes/issues"
+  },
+  "homepage": "https://github.com/aezumezu/string-classes#readme"
+}
