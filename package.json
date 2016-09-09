@@ -9,7 +9,7 @@
     "jasmine-spec-reporter": "^2.7.0"
   },
   "scripts": {
-    "test:coverage": "rm -rf coverage/ && istanbul cover node_module/jasmine/bin/jasmine.js",
+    "test:coverage": "rm -rf coverage/ && istanbul cover node_modules/jasmine/bin/jasmine.js",
     "test": "node jasmine-runner.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
