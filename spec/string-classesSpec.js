@@ -1,7 +1,8 @@
+'use strict';
+
 require('../src/string-classes.js');
 
 describe('String class tests.', function() {
-  'use strict';
   describe('hasVowels method', function() {
 
     it('returns true if the string contains vowel.', function() {
@@ -14,14 +15,6 @@ describe('String class tests.', function() {
       expect('spy'.hasVowels()).toBe(false);
       expect('3gtb74'.hasVowels()).toBe(false);
     });
-
-/*    it('throws an error if input is not a string.', function() {
-      let num = 45, trueOrFalse = false, obj = {boy: 'man'}, arr = ['hello'];
-      expect(num.hasVowels()).toThrow();
-      expect(trueOrFalse.hasVowels()).toThrowError(TypeError);
-      expect(obj.hasVowels()).toThrowError(TypeError);
-      expect(arr.hasVowels()).toThrowError(TypeError);
-    });*/
   });
 
   describe('toUpper method', function() {
@@ -86,19 +79,13 @@ describe('String class tests.', function() {
 
     it('returns an array of words in the string.', function() {
       let strWord = 'Alice in wonderland again',
-          arrWord = ['alice', 'in', 'wonderland', 'again'];
+        arrWord = ['alice', 'in', 'wonderland', 'again'];
       expect(strWord.words()).toEqual(arrWord);
     });
 
-/*    it('retain concatenating characters.', function() {
-      let strWord = 'St. Paul\'s Co-operation Int\'l.',
-          arrWord = ['st', 'paul\'s', 'co-operation', 'int\'l'];
-      expect(strWord.words()).toEqual(arrWord);
-    });*/
-
     it('remove punctuation or unnecessary characters.', function() {
       let strWord = 'In the wardrobe(closet), besides your jacket)?',
-          arrWord = ['in', 'the', 'wardrobe', 'closet', 'besides', 'your', 'jacket'];
+        arrWord = ['in', 'the', 'wardrobe', 'closet', 'besides', 'your', 'jacket'];
       expect(strWord.words()).toEqual(arrWord);
     });
   });
@@ -123,7 +110,7 @@ describe('String class tests.', function() {
       expect('4748580'.toCurrency()).toBe('4,748,580.00');
       expect('47485.8'.toCurrency()).toBe('47,485.80');
       expect('47485.81'.toCurrency()).toBe('47,485.81');
-      expect('47485.8167'.toCurrency()).toBe('47,485.82'); //is roundup necessary, or do we trim?
+      expect('47485.8167'.toCurrency()).toBe('47,485.81');
     });
   });
 
