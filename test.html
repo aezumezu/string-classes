@@ -1,0 +1,99 @@
+<!Doctype HTML>
+<html lang="en">
+  <head>
+    <title>String Classes View</title>
+  </head>
+  <body>
+    <div>
+      <div>
+        <label id="result"></label>
+      </div>
+      <div>
+        <input type="text" id="inputText" />
+        <select id="methodOptions">
+          <option value="none">------</option>
+          <option value="hasVowel">hasVowel</option>
+          <option value="toUpper">toUpper</option>
+          <option value="toLower">toLower</option>
+          <option value="ucFirst">ucFirst</option>
+          <option value="isQuestion">isQuestion</option>
+          <option value="words">words</option>
+          <option value="wordCount">wordCount</option>
+          <option value="toCurrency">toCurrency</option>
+          <option value="fromCurrency">fromCurrency</option>
+          <option value="inverseCase">inverseCase</option>
+          <option value="alternatingCase">alternatingCase</option>
+          <option value="getMiddle">getMiddle</option>
+          <option value="numberWords">numberWords</option>
+          <option value="isDigit">isDigit</option>
+          <option value="doubleCheck">doubleCheck</option>
+        </select>
+      </div>
+      <div>
+        <button onclick="run();">Run Method</button>
+      </div>
+    </div>
+    <script src="src/string-classes.js"></script>
+    <script type="text/javascript">
+      function run() {
+        var element = document.getElementById("methodOptions");
+        var selected = element.options[element.selectedIndex].text;
+        var result = document.getElementById("result");
+        var strInput = document.getElementById("inputText").value;
+        result.innerHTML = "";
+        if(strInput.trim() === "") return (result.innerHTML = "Enter a string");
+        switch(selected) {
+          case 'hasVowel':
+            result.innerHTML = strInput.hasVowels();
+            break;
+          case 'toUpper':
+            result.innerHTML = strInput.toUpper();
+            break;
+          case 'toLower':
+            result.innerHTML = strInput.toLower();
+            break;
+          case 'ucFirst':
+            result.innerHTML = strInput.ucFirst();
+            break;
+          case 'isQuestion':
+            result.innerHTML = strInput.isQuestion();
+            break;
+          case 'words':
+            console.log(strInput.words());
+            result.innerHTML = strInput.words();
+            break;
+          case 'wordCount':
+            result.innerHTML = strInput.wordCount();
+            break;
+          case 'toCurrency':
+            result.innerHTML = strInput.toCurrency();
+            break;
+          case 'fromCurrency':
+            result.innerHTML = strInput.fromCurrency();
+            break;
+          case 'inverseCase':
+            result.innerHTML = strInput.inverseCase();
+            break;
+          case 'alternatingCase':
+            result.innerHTML = strInput.alternatingCase();
+            break;
+          case 'getMiddle':
+            result.innerHTML = strInput.getMiddle();
+            break;
+          case 'numberWords':
+            result.innerHTML = strInput.numberWords();
+            break;
+          case 'isDigit':
+            result.innerHTML = strInput.isDigit();
+            break;
+          case 'doubleCheck':
+            result.innerHTML = strInput.doubleCheck();
+            break;
+          default:
+            result.innerHTML = 'Select a method to Execute';
+            break;
+        };
+      };
+    </script>
+  </body>
+</html>
