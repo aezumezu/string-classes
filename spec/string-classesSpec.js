@@ -127,4 +127,69 @@ describe('String class tests.', function() {
       expect('956'.fromCurrency()).toBe(956);
     });
   });
+
+  describe('inverseCase method', function() {
+    it('should return each letter as an inverse of its current case.', function() {
+      expect('Hello world'.inverseCase()).toBe('hELLO WORLD');
+      expect('I aM gREAt'.inverseCase()).toBe('i Am GreaT');
+    });
+
+    it('should only alter letters. Well, of course.', function() {
+      expect('33yrs of Age.'.inverseCase()).toBe('33YRS OF aGE.');
+    });
+  });
+
+  describe('alternatingCase method', function() {
+    it('should return the letters in alternating case.', function() {
+      expect('Hello world'.alternatingCase()).toBe('hElLo WoRlD');
+      expect('madam am adam'.alternatingCase()).toBe('mAdAm Am AdAm');
+    });
+  });
+
+  describe('getMiddle method', function() {
+    it('should return the character(s) in the middle of the string', function() {
+      expect('hello'.getMiddle()).toBe('l');
+      expect('hi'.getMiddle()).toBe('hi');
+    });
+
+    it('should return blank space if is in the middle.', function() {
+      expect('what are you looking for?'.getMiddle()).toBe(' ');
+    });
+  });
+
+  describe('numberWords method', function() {
+    it('should convert figures in a string to words.', function() {
+      expect('674'.numberWords()).toBe('six seven four');
+      expect('M55 yaba, Lagos.'.numberWords()).toBe('M five five yaba, Lagos.');
+    })
+  });
+
+  describe('isDigit method', function() {
+    it('should return true if string is a single digit.', function() {
+      expect('4'.isDigit()).toBeTruthy();
+      expect('0'.isDigit()).toBeTruthy();
+    });
+
+    it('should return false if string is not a single digit.', function() {
+      expect('44'.isDigit()).toBeFalsy();
+      expect(''.isDigit()).toBeFalsy();
+      expect('4pm'.isDigit()).toBeFalsy();
+      expect('-1'.isDigit()).toBeFalsy();
+    })
+  });
+
+  describe('doubleCheck method', function() {
+    it('should return true if a character appears twice in succession', function() {
+      expect('Hello world'.doubleCheck()).toBeTruthy();
+      expect('hurray'.doubleCheck()).toBeTruthy();
+      expect('Bring the beer'.doubleCheck()).toBeTruthy();
+      expect('two  spaces'.doubleCheck()).toBeTruthy();
+      expect('two ,, special chars'.doubleCheck()).toBeTruthy();
+    });
+
+    it('should return false for non successive appearances', function() {
+      expect('The end is here'.doubleCheck()).toBeFalsy();
+      expect('T'.doubleCheck()).toBeFalsy();
+    });
+  });
 });

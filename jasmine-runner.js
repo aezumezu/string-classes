@@ -1,4 +1,3 @@
-'use strict';
 var Jasmine = require('jasmine');
 var SpecReporter = require('jasmine-spec-reporter');
 var noop = function() {};
