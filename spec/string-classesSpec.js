@@ -131,7 +131,7 @@ describe('String class tests.', function() {
   describe('inverseCase method', function() {
     it('should return each letter as an inverse of its current case.', function() {
       expect('Hello world'.inverseCase()).toBe('hELLO WORLD');
-      expect('I aM gREAt.'.inverseCase()).toBe('i Am GreaT');
+      expect('I aM gREAt'.inverseCase()).toBe('i Am GreaT');
     });
 
     it('should only alter letters. Well, of course.', function() {
