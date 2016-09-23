@@ -184,10 +184,12 @@ describe('String class tests.', function() {
       expect('hurray'.doubleCheck()).toBeTruthy();
       expect('Bring the beer'.doubleCheck()).toBeTruthy();
       expect('two  spaces'.doubleCheck()).toBeTruthy();
+      expect('two ,, special chars'.doubleCheck()).toBeTruthy();
     });
 
     it('should return false for non successive appearances', function() {
       expect('The end is here'.doubleCheck()).toBeFalsy();
+      expect('T'.doubleCheck()).toBeFalsy();
     });
   });
 });

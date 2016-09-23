@@ -229,7 +229,7 @@ String.prototype.doubleCheck = function() {
     return false;
   }
 
-  for(let i = 0; i < this.length; i++) {
+  for(let i = 0, strLen = this.length; i < strLen; i++) {
     if(this.substr(i, 1) === this.substr(i+1, 1)) {
       return true;
     }
