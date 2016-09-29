@@ -2,3 +2,4 @@ node_modules
 .brackets.json
 coverage
 .vscode
+gulpFile.js

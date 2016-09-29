@@ -7,7 +7,7 @@
  * 
  * @return {boolean}
  */
-String.prototype.hasVowels = function() {
+String.prototype.hasVowels = function () {
   return /[aeiou]/i.test(this);
 };
 
@@ -18,7 +18,7 @@ String.prototype.hasVowels = function() {
  * 
  * @return {string}
  */
-String.prototype.toUpper = function() {
+String.prototype.toUpper = function () {
   return this.replace(/[a-z]/g, (match) => {
     return String.fromCharCode(match.charCodeAt() - 32);
   });
@@ -31,7 +31,7 @@ String.prototype.toUpper = function() {
  * 
  * @return {string}
  */
-String.prototype.toLower = function() {
+String.prototype.toLower = function () {
   return this.replace(/[A-Z]/g, (match) => {
     return String.fromCharCode(match.charCodeAt() + 32);
   });
@@ -44,7 +44,7 @@ String.prototype.toLower = function() {
  * 
  * @return {string}
  */
-String.prototype.ucFirst = function() {
+String.prototype.ucFirst = function () {
   return this[0].toUpper() + this.substring(1);
 };
 
@@ -55,7 +55,7 @@ String.prototype.ucFirst = function() {
  * 
  * @return {boolean}
  */
-String.prototype.isQuestion = function() {
+String.prototype.isQuestion = function () {
   return this.match(/\?$/) ? true : false;
 };
 
@@ -66,7 +66,7 @@ String.prototype.isQuestion = function() {
  * 
  * @return {array}
  */
-String.prototype.words = function() {
+String.prototype.words = function () {
   return this.toLower().split(/\W/).filter( x => {return x !== '';});
 };
 
@@ -77,7 +77,7 @@ String.prototype.words = function() {
  * 
  * @return {number}
  */
-String.prototype.wordCount = function() {
+String.prototype.wordCount = function () {
   return this.words().length;
 };
 
@@ -88,7 +88,7 @@ String.prototype.wordCount = function() {
  * 
  * @return {string}
  */
-String.prototype.toCurrency = function() {
+String.prototype.toCurrency = function () {
   let result,
     tempresult;
   if(/^[\d]*(\.\d*)?$/.test(this)) {
@@ -115,7 +115,7 @@ String.prototype.toCurrency = function() {
  * 
  * @return {string}
  */
-String.prototype.appendComma = function() {
+String.prototype.appendComma = function () {
   let wholePart = this.split('').map((item, index) => {
     if((this.length - (index + 1)) >= 3 &&
       (this.length - (index + 1)) % 3 === 0) {
@@ -133,7 +133,7 @@ String.prototype.appendComma = function() {
  * 
  * @return {number}
  */
-String.prototype.fromCurrency = function() {
+String.prototype.fromCurrency = function () {
   let num;
   if(/^[{\d,}]*(\.\d{0,2})?$/.test(this)) {
     num = this.replace(/,/g, '');
@@ -149,7 +149,7 @@ String.prototype.fromCurrency = function() {
  * 
  * @return {string}
  */
-String.prototype.inverseCase = function() {
+String.prototype.inverseCase = function () {
   return this.replace(/[a-zA-Z]/g, (match) => {
     return /[a-z]/g.test(match) ? match.toUpper() : match.toLower();
   });
@@ -162,7 +162,7 @@ String.prototype.inverseCase = function() {
  * 
  * @return {string}
  */
-String.prototype.alternatingCase = function() {
+String.prototype.alternatingCase = function () {
   let cap = true;
   return this.replace(/[a-zA-Z]/g, (match) => {
     cap = cap ? false : true;
@@ -177,7 +177,7 @@ String.prototype.alternatingCase = function() {
  * 
  * @return {string}
  */
-String.prototype.getMiddle = function() {
+String.prototype.getMiddle = function () {
   let result,
     halfLen = parseInt(this.length/2);
   if(this.length % 2) {
@@ -195,10 +195,12 @@ String.prototype.getMiddle = function() {
  * 
  * @return {string}
  */
-String.prototype.numberWords = function() {
-  let result,
-    numbers = [' zero ', ' one ', ' two ', ' three ',
-    ' four ', ' five ', ' six ', ' seven ', ' eight ', ' nine ', ' ten '];
+String.prototype.numberWords = function () {
+  let numbers = [
+        ' zero ',' one ', ' two ',
+        ' three ',' four ', ' five ', ' six ',
+        ' seven ', ' eight ', ' nine '
+      ];
 
   return this.replace(/[0-9]/g, (match) => {
     return numbers[match];
@@ -213,7 +215,7 @@ String.prototype.numberWords = function() {
  * 
  * @return {boolean}
  */
-String.prototype.isDigit = function() {
+String.prototype.isDigit = function () {
   return this.length === 1 && /\d/g.test(this) ? true : false;
 };
 
@@ -224,7 +226,7 @@ String.prototype.isDigit = function() {
  * 
  * @return {boolean}
  */
-String.prototype.doubleCheck = function() {
+String.prototype.doubleCheck = function () {
   if(this.length > 1) {
     for(let i = 0, strLen = this.length; i < strLen; i++) {
       if(this.substr(i, 1) === this.substr(i+1, 1)) {
