@@ -19,11 +19,9 @@ String.prototype.hasVowels = function() {
  * @return {string}
  */
 String.prototype.toUpper = function() {
-  let str = this;
-  function upper(match) {
+  return this.replace(/[a-z]/g, (match) => {
     return String.fromCharCode(match.charCodeAt() - 32);
-  }
-  return str.replace(/[a-z]/g, upper);
+  });
 };
 
 /**
@@ -34,11 +32,9 @@ String.prototype.toUpper = function() {
  * @return {string}
  */
 String.prototype.toLower = function() {
-  let str = this;
-  function lower(match) {
+  return this.replace(/[A-Z]/g, (match) => {
     return String.fromCharCode(match.charCodeAt() + 32);
-  }
-  return str.replace(/[A-Z]/g, lower);
+  });
 };
 
 /**
@@ -49,7 +45,7 @@ String.prototype.toLower = function() {
  * @return {string}
  */
 String.prototype.ucFirst = function() {
-  return this.substring(0,1).toUpper() + this.substring(1);
+  return this[0].toUpper() + this.substring(1);
 };
 
 /**
@@ -94,18 +90,10 @@ String.prototype.wordCount = function() {
  */
 String.prototype.toCurrency = function() {
   let result,
-    wholePart,
     tempresult;
   if(/^[\d]*(\.\d*)?$/.test(this)) {
     tempresult = this.split('.');
-    wholePart = tempresult[0].split('').map((item, index) => {
-      if((tempresult[0].length - (index + 1)) >= 3 &&
-         (tempresult[0].length - (index + 1)) % 3 === 0) {
-        item += ',';
-      }
-      return item;
-    }).join('');
-    tempresult[0] = wholePart;
+    tempresult[0] = tempresult[0].appendComma();
     if(tempresult[1]) {
       tempresult[1] = tempresult[1].length > 1 ?
         tempresult[1].slice(0, 2) : tempresult[1] + '0';
@@ -119,6 +107,24 @@ String.prototype.toCurrency = function() {
   return result;
 };
 
+/**
+ * appendComma
+ * 
+ * appends comma to a string at a position after 
+ * the multiple of three
+ * 
+ * @return {string}
+ */
+String.prototype.appendComma = function() {
+  let wholePart = this.split('').map((item, index) => {
+    if((this.length - (index + 1)) >= 3 &&
+      (this.length - (index + 1)) % 3 === 0) {
+      item += ',';
+    }
+    return item;
+  }).join('');
+  return wholePart;
+}
 
 /**
  * fromCurrency
@@ -128,14 +134,12 @@ String.prototype.toCurrency = function() {
  * @return {number}
  */
 String.prototype.fromCurrency = function() {
-  let result, num;
+  let num;
   if(/^[{\d,}]*(\.\d{0,2})?$/.test(this)) {
     num = this.replace(/,/g, '');
-    result = parseFloat(parseFloat(num).toFixed(2));
-  } else {
-    result = 'Error\nYou entered an invalid number.';
+    return parseFloat(parseFloat(num).toFixed(2));
   }
-  return result;
+  return 'Error\nYou entered an invalid number.';
 };
 
 /**
@@ -146,10 +150,9 @@ String.prototype.fromCurrency = function() {
  * @return {string}
  */
 String.prototype.inverseCase = function() {
-  function reverse(match) {
+  return this.replace(/[a-zA-Z]/g, (match) => {
     return /[a-z]/g.test(match) ? match.toUpper() : match.toLower();
-  }
-  return this.replace(/[a-zA-Z]/g, reverse);
+  });
 };
 
 /**
@@ -161,11 +164,10 @@ String.prototype.inverseCase = function() {
  */
 String.prototype.alternatingCase = function() {
   let cap = true;
-  function alternate(match) {
+  return this.replace(/[a-zA-Z]/g, (match) => {
     cap = cap ? false : true;
     return cap ? match.toUpper() : match.toLower();
-  }
-  return this.replace(/[a-zA-Z]/g, alternate);
+  });
 };
 
 /**
@@ -198,12 +200,10 @@ String.prototype.numberWords = function() {
     numbers = [' zero ', ' one ', ' two ', ' three ',
     ' four ', ' five ', ' six ', ' seven ', ' eight ', ' nine ', ' ten '];
 
-  function figure2word(match) {
+  return this.replace(/[0-9]/g, (match) => {
     return numbers[match];
-  }
-
-  result = this.replace(/[0-9]/g, figure2word);
-  return (result.trim()).replace(/\s{2}/g, ' ');
+  })
+  .trim().replace(/\s{2}/g, ' ');
 };
 
 /**
@@ -225,13 +225,11 @@ String.prototype.isDigit = function() {
  * @return {boolean}
  */
 String.prototype.doubleCheck = function() {
-  if(this.length < 2) {
-    return false;
-  }
-
-  for(let i = 0, strLen = this.length; i < strLen; i++) {
-    if(this.substr(i, 1) === this.substr(i+1, 1)) {
-      return true;
+  if(this.length > 1) {
+    for(let i = 0, strLen = this.length; i < strLen; i++) {
+      if(this.substr(i, 1) === this.substr(i+1, 1)) {
+        return true;
+      }
     }
   }
   return false;
